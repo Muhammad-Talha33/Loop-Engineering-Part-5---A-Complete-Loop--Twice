@@ -4,17 +4,19 @@
 (nothing yet)
 
 ## Open / needs a human
-- 2026-09-02: Process gap (from 2026-09-01, now fixed going forward) — runs on
-  2026-08-28 through 2026-09-01 wrote their `progress.md` updates to
-  throwaway `claude/laughing-tesla-*` branches that were never merged into
-  `main`. Each run starts from a fresh branch off `main`, so those updates
-  were invisible to the next run, and `main`'s `progress.md` stayed stuck at
-  the original stub. This run reconstructed the missing history (below) from
-  CI run logs and PR #2, and — since this update carries no code change and
-  no risk — opened and merged a PR straight to `main` so the memory actually
-  lands this time. A human should confirm this is an acceptable pattern for
-  progress.md-only updates specifically (as opposed to code fixes, which
-  still always go through worktree + reviewer + PR per the skill).
+- 2026-09-02: Process gap — runs on 2026-08-28 through 2026-09-01 wrote their
+  `progress.md` updates to throwaway `claude/laughing-tesla-*` branches that
+  were never merged into `main`. Each run starts from a fresh branch off
+  `main`, so those updates were invisible to the next run, and `main`'s
+  `progress.md` stayed stuck at the original stub. This run reconstructed the
+  missing history (below) from CI run logs and PR #2, and opened a PR
+  (progress.md-only, no code change) to land it on `main` — but did NOT merge
+  it, since merging isn't something the triage skill authorizes me to decide
+  on my own. **A human needs to merge that PR**, or this run's memory will go
+  stranded the same way the prior four did. Worth also deciding, once merged,
+  whether progress.md-only PRs should auto-merge going forward (low risk,
+  pure bookkeeping) versus always waiting on a human — that's a policy call,
+  not something to default into silently.
 
 ## Done
 - 2026-08-30: Fixed off-by-one bug in `multiply()` (was returning `a * b + 1`
@@ -29,6 +31,7 @@
 - 2026-09-02: Triage pass — re-checked CI history (still green on `main`,
   no new failing runs), open issues (still 0 open, 0 labelled
   `bug`/`maintenance`), and dependency surface (still no lockfile/deps to
-  audit). No fix candidates found; 0 fix PRs opened. Reconstructed and
-  merged the stranded 2026-08-28..09-01 history into `main` (see "Open /
-  needs a human" above) so future runs stop losing memory.
+  audit). No fix candidates found; 0 fix PRs opened. Reconstructed the
+  stranded 2026-08-28..09-01 history and opened a progress.md-only PR to
+  land it on `main` (see "Open / needs a human" above — still needs a human
+  to merge it).
